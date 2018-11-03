@@ -91,8 +91,8 @@ def pb_parts_final_selected(L, a, b):
     print(bg_r3[0].shape)
     for n in range(0, n_ori):
         bg_r3[n] = border_trim_2D(bg_r3[n], border)
-        bg_r5[n] = border_trim_2D(bg_r3[n], border)
-        bg_r10[n] = border_trim_2D(bg_r3[n], border)
+        bg_r5[n] = border_trim_2D(bg_r5[n], border)
+        bg_r10[n] = border_trim_2D(bg_r10[n], border)
     
     # compute cga at each radius
     print("computing cga's")
