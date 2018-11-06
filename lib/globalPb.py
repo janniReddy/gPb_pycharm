@@ -2,6 +2,7 @@ import numpy as np
 from scipy import ndimage
 import cv2
 from multiscalePb import multiscalePb
+from spectralPb import spectralPb
 import matplotlib.pyplot as plt
 
 
@@ -29,8 +30,10 @@ def globalPb(imgFile, outFile='', rsz=1.0):
         weights = [0, 0, 0.0054, 0, 0, 0, 0, 0, 0, 0.0048, 0.0049, 0.0264, 0.0090]
     # mPb
     [mPb, mPb_rsz, bg1, bg2, bg3, cga1, cga2, cga3, cgb1, cgb2, cgb3, tg1, tg2, tg3, textons] = multiscalePb(im, rsz)
-    print(orig_sz)
-    print(weights)
+
+    # sPb
+    outFile2 = outFile + '_pbs.mat'
+    sPb = spectralPb(mPb_rsz, orig_sz, outFile2)
 
 
 # # To show the image
@@ -43,4 +46,4 @@ def globalPb(imgFile, outFile='', rsz=1.0):
 # cv2.destroyAllWindows()
 
 
-globalPb('../data/101087.jpg')
+globalPb('../data/101087.jpg', 'data/101087_gPb.mat')

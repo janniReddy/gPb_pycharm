@@ -158,7 +158,7 @@ def nonmax_channels(pb, nonmax_ori_tol = math.pi / 8):
     n_ori = pb.shape[2]
     oris = np.arange(0, n_ori) / n_ori * math.pi
     y, i = pb.max(2)
-    i = oris(i)
+    i = oris[i]
     y[y<0] = 0
     nmax = nonmax_oriented_2D(y, i, nonmax_ori_tol) # y and i are 2D matrix of same shape(i.e 300x200 for example image) nonmax_ori_tol is 0.392
     return nmax
